@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="demo">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Angular demo</title>
+
+    <!-- Bootstrap -->
+
+    <link href="/bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="/bower_components/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet">
+    <link href="/style.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="/bower_components/html5shiv/dist/html5shiv.js"></script>
+    <script src="/bower_components/respond/dest/respond.src.js"></script>
+    <![endif]-->
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+    <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="/js/Application.js"></script>
+    <script src="/js/controllers/TableController.js"></script>
+    <script src="/js/controllers/PopupController.js"></script>
+    <script src="/js/directives/sortedHeader.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3">
+            <h1>Demo</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-9" ng-controller="TableController">
+            <h3>Last affected: {{ changed ? (changed.name + '(' + changed.id + ')') : '' }}</h3>
+            <table class="table table-bordered table-striped colored-table">
+                <thead>
+                <tr>
+                    <th class="th_hovered" ng-click="toggleSort('id')">
+                        <sorted-header column='id' sort-config="sortConfig"></sorted-header>
+                        #
+                    </th>
+                    <th class="th_hovered" ng-click="toggleSort('name')">
+                        <sorted-header column='name' sort-config="sortConfig"></sorted-header>
+                        Name
+                    </th>
+                    <th class="th_hovered" ng-click="toggleSort('surname')">
+                        <sorted-header column='surname' sort-config="sortConfig"></sorted-header>
+                        Surname
+                    </th>
+                    <th class="th_hovered" ng-click="toggleSort('instrument')">
+                        <sorted-header column='instrument' sort-config="sortConfig"></sorted-header>
+                        Instrument
+                    </th>
+                    <th>Delete</th>
+                </tr>
+                </thead>
+                <tbody ng-repeat="musician in musicians">
+                <tr>
+                    <td>{{ musician.id }}</td>
+                    <td>{{ musician.name }}</td>
+                    <td>{{ musician.surname }}</td>
+                    <td>{{ musician.instrument }}</td>
+                    <td>
+                        <button type="button" class="btn btn-danger" ng-click="open(musician)" data-attr-id="{{ musician.id }}">Delete</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+</body>
+</html>

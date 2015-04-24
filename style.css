@@ -1,0 +1,6 @@
+.colored-table > thead > tr > th {
+    background-color: #FCF8E3;
+}
+.colored-table > thead > tr > th.th_hovered:hover {
+    background-color: #D9EDF7;
+}

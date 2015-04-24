@@ -1,0 +1,10 @@
+{
+  "name": "angular-demo",
+  "dependencies": {
+    "respond": "latest",
+    "html5shiv": "latest",
+    "bootstrap": "latest",
+    "angular": "latest",
+    "angular-bootstrap": "latest"
+  }
+}
